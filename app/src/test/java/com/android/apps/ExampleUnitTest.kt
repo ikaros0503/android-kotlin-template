@@ -1,5 +1,6 @@
 package com.android.apps
 
+import com.android.apps.extensions.px
 import org.junit.Test
 
 import org.junit.Assert.*
