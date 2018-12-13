@@ -10,9 +10,9 @@ import com.android.apps.views.fragments.BaseFragment
 /**
  * Created by annguyen on 1/30/18.
  */
-class FragmentContentPagerAdapter(fm: FragmentManager?) : FragmentStatePagerAdapter(fm) {
+class FragmentContentPagerAdapter(fm: FragmentManager?, defaultFragments: Array<BaseFragment>? = null) : FragmentStatePagerAdapter(fm) {
 
-    private val mListFragment: ArrayList<Fragment> = ArrayList()
+    private val mListFragment = defaultFragments?.let { arrayListOf(*it) } ?: arrayListOf()
 
 
     override fun getItem(position: Int): Fragment {
@@ -25,22 +25,22 @@ class FragmentContentPagerAdapter(fm: FragmentManager?) : FragmentStatePagerAdap
 
     @Suppress("CAST_NEVER_SUCCEEDS")
     override fun getPageTitle(position: Int): CharSequence? {
-        return ""
+        return try { mListFragment[position].getFragmentTitle() } catch (e: ArrayIndexOutOfBoundsException) { "" }
     }
 
     override fun restoreState(state: Parcelable?, loader: ClassLoader?) {
 
     }
 
-    fun addFragment(fragment: Fragment) {
+    fun addFragment(fragment: BaseFragment) {
         mListFragment.add(fragment)
     }
 
-    fun addFragment(fragment: Fragment, index: Int) {
+    fun addFragment(fragment: BaseFragment, index: Int) {
         mListFragment.add(index, fragment)
     }
 
-    fun removeFragment(fragment: Fragment) {
+    fun removeFragment(fragment: BaseFragment) {
         mListFragment.remove(fragment)
     }
 
@@ -49,7 +49,7 @@ class FragmentContentPagerAdapter(fm: FragmentManager?) : FragmentStatePagerAdap
     }
 
     fun getItemPosition(fragmentId: Int) : Int {
-        return mListFragment.indexOfFirst { (it as BaseFragment).getFragmentId() == fragmentId }
+        return mListFragment.indexOfFirst { it.getFragmentId() == fragmentId }
     }
 
     override fun getItemPosition(`object`: Any): Int {

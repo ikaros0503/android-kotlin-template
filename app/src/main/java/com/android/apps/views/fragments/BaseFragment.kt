@@ -50,9 +50,9 @@ abstract class BaseFragment : Fragment() {
     @LayoutRes
     abstract fun getLayoutId(): Int
 
-    protected open fun getFragmentTitle(): String = ""
+    open fun getFragmentTitle(): String = ""
 
-    protected open fun getFragmentIcon(): Int = 0
+    open fun getFragmentIcon(): Int = 0
 
     open fun getFragmentId(): Int = 0
 

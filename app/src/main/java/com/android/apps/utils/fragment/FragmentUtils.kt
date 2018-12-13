@@ -10,7 +10,7 @@ object FragmentUtils {
     private var mInAnimation = android.R.anim.slide_in_left
     private var mOutAnimation = android.R.anim.slide_out_right
 
-    fun init(fragmentManager: FragmentManager?, mainLayoutResId: Int) {
+    fun connect(fragmentManager: FragmentManager?, mainLayoutResId: Int) {
         this.mFragmentManager = fragmentManager!!
         this.mMainLayoutResId = mainLayoutResId
     }
@@ -55,6 +55,7 @@ object FragmentUtils {
                     }
                     .remove(lastFragment)
                     .commit()
+
             // Pop BackStack
             mFragmentManager.popBackStack()
             return true
