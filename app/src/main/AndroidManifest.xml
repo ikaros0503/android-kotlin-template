@@ -3,6 +3,7 @@
           package="com.android.apps">
 
     <application
+        android:name=".views.application.MainApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"

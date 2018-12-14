@@ -66,12 +66,20 @@ dependencies {
     implementation "com.android.support:animated-vector-drawable:$versions.android_support"
     implementation "com.android.support:cardview-v7:$versions.android_support"
 
+    /**
+     * Constraint layout
+     */
     implementation "com.android.support.constraint:constraint-layout:$versions.android_constrain_layout"
 
+    /**
+     * ReactiveX
+     */
     implementation "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
     implementation "io.reactivex.rxjava2:rxjava:$versions.rx_java"
 
-
+    /**
+     * Test
+     */
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
