@@ -1,11 +1,15 @@
 package com.android.apps.views.activities.main
 
+import android.os.Bundle
+import androidx.databinding.DataBindingUtil
 import com.android.apps.R
-import com.android.apps.utils.permission.Permissions
+import com.android.apps.data.user.User
+import com.android.apps.databinding.ActivityMainBinding
 import com.android.apps.views.activities.BaseActivity
-import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), MainConstract.View {
+
+    override val presenter: MainConstract.Presenter = MainPresenter()
 
     override fun getLayoutId(): Int = R.layout.activity_main
 
@@ -14,18 +18,10 @@ class MainActivity : BaseActivity() {
 
     override fun initializeViewComponent() {
         super.initializeViewComponent()
-        button.setOnClickListener {
-            Permissions.Builder(this)
-                    .checkDrawOverApps()
-                    .ensure()
-                    .requestIfFailed()
-                    .onGranted { permission, all ->
+    }
 
-                    }
-                    .onDenied { permission, all ->
-
-                    }
-                    .check()
-        }
+    override fun onResume() {
+        super.onResume()
+        presenter.start()
     }
 }
