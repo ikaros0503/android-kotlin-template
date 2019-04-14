@@ -1,18 +1,22 @@
 package com.android.apps.extensions
 
 import android.content.Context
-import android.support.annotation.StringRes
-import android.support.v4.content.ContextCompat
+import android.os.Build
+import androidx.annotation.StringRes
+import androidx.core.content.ContextCompat
 import java.lang.Exception
 
-fun Int.getString(context: Context, vararg args: Any) = try {
-    context.getString(this, args)
-} catch (e: Exception) {
-    ""
-}
+/**
+ * Check if device android versions is Android 5 above
+ */
+fun isLollipopAbove() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
 
-fun Int.getDrawable(context: Context) = try {
-    ContextCompat.getDrawable(context, this)
-} catch (e: Exception) {
-    null
-}
+/**
+ * Check if device android versions is Android 6 above
+ */
+fun isMarshmallowAbove() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+
+/**
+ * Check if device android versions is Android O above
+ */
+fun isOreoAbove() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O

@@ -1,7 +1,7 @@
 package com.android.apps.views.application
 
 import android.app.Application
-import com.android.apps.utils.prefs.PreferencesUtils
+import com.android.apps.utils.prefs.Preferences
 
 class MainApplication: Application() {
 
@@ -13,8 +13,7 @@ class MainApplication: Application() {
 
     private fun initializeHelper() {
         with(applicationContext) {
-            PreferencesUtils.init(this)
+            Preferences.inject(this)
         }
     }
-
 }

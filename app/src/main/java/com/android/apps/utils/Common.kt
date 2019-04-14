@@ -2,9 +2,7 @@ package com.android.apps.utils
 
 import android.content.Context
 import android.os.StrictMode
-import android.support.v7.app.AlertDialog
-import android.widget.Toast
-import com.android.apps.utils.prefs.PreferencesUtils
+import androidx.appcompat.app.AlertDialog
 import java.net.InetAddress
 
 /**
@@ -25,7 +23,7 @@ fun confirm(context: Context, title: String = "", message: String = ""): AlertDi
             .create()
 }
 
-fun isNetworkAvailable(): Boolean {
+fun networkAvailable(): Boolean {
     return try {
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
@@ -35,8 +33,4 @@ fun isNetworkAvailable(): Boolean {
     } catch (e: Exception) {
         false
     }
-}
-
-fun intializeHelper(context: Context) {
-    PreferencesUtils.init(context)
 }

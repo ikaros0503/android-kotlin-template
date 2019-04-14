@@ -5,9 +5,11 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.res.Resources
 import android.net.Uri
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import org.json.JSONArray
+import java.lang.Exception
 
 /**
  * JSONArray
@@ -45,9 +47,11 @@ fun Context.toast(message: String = "", messageId: Int = -1) {
     }
 }
 
-fun Context.showStoreView(packageId: String) {
+fun Context.goStore(packageId: String) {
     startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageId")).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
 }
+
+
 
 /**
  * Int
@@ -57,6 +61,17 @@ val Int.dp: Float
 val Int.px: Float
     get() = (this * Resources.getSystem().displayMetrics.density)
 
+fun Int.getString(context: Context, vararg args: Any) = try {
+    context.getString(this, args)
+} catch (e: Exception) {
+    ""
+}
+
+fun Int.getDrawable(context: Context) = try {
+    ContextCompat.getDrawable(context, this)
+} catch (e: Exception) {
+    null
+}
 
 /**
  * Float

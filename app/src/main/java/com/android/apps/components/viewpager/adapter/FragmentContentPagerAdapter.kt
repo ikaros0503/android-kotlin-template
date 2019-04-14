@@ -1,31 +1,31 @@
 package com.android.apps.components.viewpager.adapter
 
 import android.os.Parcelable
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
-import android.support.v4.view.PagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.viewpager.widget.PagerAdapter
 import com.android.apps.views.fragments.BaseFragment
 
 /**
  * Created by annguyen on 1/30/18.
  */
-class FragmentContentPagerAdapter(fm: FragmentManager?, defaultFragments: Array<BaseFragment>? = null) : FragmentStatePagerAdapter(fm) {
+class FragmentContentPagerAdapter(fm: FragmentManager?, vararg fragments: BaseFragment) : FragmentStatePagerAdapter(fm) {
 
-    private val mListFragment = defaultFragments?.let { arrayListOf(*it) } ?: arrayListOf()
+    private val listFragment = arrayListOf(*fragments)
 
 
     override fun getItem(position: Int): Fragment {
-        return mListFragment[position]
+        return listFragment[position]
     }
 
     override fun getCount(): Int {
-        return mListFragment.size
+        return listFragment.size
     }
 
     @Suppress("CAST_NEVER_SUCCEEDS")
     override fun getPageTitle(position: Int): CharSequence? {
-        return try { mListFragment[position].getFragmentTitle() } catch (e: ArrayIndexOutOfBoundsException) { "" }
+        return try { listFragment[position].getFragmentTitle() } catch (e: ArrayIndexOutOfBoundsException) { "" }
     }
 
     override fun restoreState(state: Parcelable?, loader: ClassLoader?) {
@@ -33,38 +33,27 @@ class FragmentContentPagerAdapter(fm: FragmentManager?, defaultFragments: Array<
     }
 
     fun addFragment(fragment: BaseFragment) {
-        mListFragment.add(fragment)
+        listFragment.add(fragment)
     }
 
     fun addFragment(fragment: BaseFragment, index: Int) {
-        mListFragment.add(index, fragment)
+        listFragment.add(index, fragment)
     }
 
     fun removeFragment(fragment: BaseFragment) {
-        mListFragment.remove(fragment)
+        listFragment.remove(fragment)
     }
 
     fun removeFragment(index: Int) {
-        mListFragment.removeAt(index)
+        listFragment.removeAt(index)
     }
 
     fun getItemPosition(fragmentId: Int) : Int {
-        return mListFragment.indexOfFirst { it.getFragmentId() == fragmentId }
+        return listFragment.indexOfFirst { it.getFragmentId() == fragmentId }
     }
 
     override fun getItemPosition(`object`: Any): Int {
         return PagerAdapter.POSITION_NONE
     }
 
-    companion object {
-        fun init(fragmentManager: FragmentManager?): FragmentContentPagerAdapter {
-            return FragmentContentPagerAdapter(fragmentManager)
-//                    .apply {
-//                        addFragment(HomeFragment())
-//                        addFragment(PlaylistFragment())
-//                        addFragment(SearchFragment())
-//                        addFragment(AccountFragment())
-//                    }
-        }
-    }
 }
