@@ -14,13 +14,17 @@ import retrofit2.http.Query
 interface ApiServices {
     @GET("/events")
     fun listEvents(@Query("conditions[type]") type: String = "recent_playing",
-                   @Query("options[limit]") limit: Int = 20
+                   @Query("options[limit]") limit: Int = DEFAULT_MAX_ITEM_FETCHED,
+                   @Query("options[skip]") skip: Int = 0
     ): Flowable<List<Event>>
 
     @GET("/events/{id}")
     fun getEvent(@Path("id") eventId: String): Flowable<Event>
 
     companion object {
+
+        const val DEFAULT_MAX_ITEM_FETCHED = 20
+
         @Volatile private var instance: ApiServices? = null
 
         val default: ApiServices = instance ?: synchronized(ApiServices::class.java) {

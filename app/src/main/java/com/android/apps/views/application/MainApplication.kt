@@ -2,6 +2,7 @@ package com.android.apps.views.application
 
 import android.app.Application
 import com.android.apps.utils.prefs.Preferences
+import com.facebook.drawee.backends.pipeline.Fresco
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -16,6 +17,7 @@ class MainApplication: Application() {
     private fun initializeHelper() {
         with(applicationContext) {
             Preferences.inject(this)
+            Fresco.initialize(this)
         }
     }
 }
