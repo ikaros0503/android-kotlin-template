@@ -28,8 +28,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_video_item"
-
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_behaviour"
+        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
