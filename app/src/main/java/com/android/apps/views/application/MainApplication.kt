@@ -1,6 +1,7 @@
 package com.android.apps.views.application
 
 import android.app.Application
+import com.android.apps.realm.RealmUtils
 import com.android.apps.utils.prefs.Preferences
 
 class MainApplication: Application() {
@@ -14,6 +15,7 @@ class MainApplication: Application() {
     private fun initializeHelper() {
         with(applicationContext) {
             Preferences.inject(this)
+            RealmUtils.initialize(this)
         }
     }
 }

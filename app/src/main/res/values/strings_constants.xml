@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bottom_navigation_behaviour">com.android.apps.components.behavior.BottomNavigationBehavior</string>
+    <string name="bottom_navigation_fab_behaviour">com.android.apps.components.behavior.BottomNavigationFABBehavior</string>
+</resources>

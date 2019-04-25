@@ -4,4 +4,7 @@
     <integer name="config_activityDefaultDur">220</integer>
     <integer name="config_activityShortDur">150</integer>
 
+    <dimen name="dimen_fab_fragment_home_margin">16dp</dimen>
+    <dimen name="dimen_fab_fragment_home_margin_bottom">80dp</dimen>
+
 </resources>

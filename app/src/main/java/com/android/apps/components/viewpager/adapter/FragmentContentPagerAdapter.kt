@@ -10,7 +10,7 @@ import com.android.apps.views.fragments.BaseFragment
 /**
  * Created by annguyen on 1/30/18.
  */
-class FragmentContentPagerAdapter(fm: FragmentManager?, vararg fragments: BaseFragment) : FragmentStatePagerAdapter(fm) {
+class FragmentContentPagerAdapter(fm: FragmentManager, vararg fragments: BaseFragment) : FragmentStatePagerAdapter(fm) {
 
     private val listFragment = arrayListOf(*fragments)
 

@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'realm-android'
 
 android {
 
@@ -58,13 +60,13 @@ dependencies {
     /**
      * Android support
      */
-    implementation "androidx.appcompat:appcompat:$versions.android_support"
-    implementation "com.google.android.material:material:$versions.android_support"
-    implementation "androidx.legacy:legacy-support-v4:$versions.android_support"
-    implementation "androidx.browser:browser:$versions.android_support"
-    implementation "androidx.recyclerview:recyclerview:$versions.android_support"
-    implementation "androidx.vectordrawable:vectordrawable-animated:$versions.android_support"
-    implementation "androidx.cardview:cardview:$versions.android_support"
+    implementation "androidx.appcompat:appcompat:$versions.androidx.appcompat"
+    implementation "com.google.android.material:material:$versions.androidx.material"
+    implementation "androidx.legacy:legacy-support-v4:$versions.androidx.support_v4"
+    implementation "androidx.browser:browser:$versions.androidx.browser"
+    implementation "androidx.recyclerview:recyclerview:$versions.androidx.recyclerview"
+    implementation "androidx.vectordrawable:vectordrawable-animated:$versions.androidx.vectordrawable_animated"
+    implementation "androidx.cardview:cardview:$versions.androidx.cardview"
 
     /**
      * Constraint layout
@@ -76,6 +78,12 @@ dependencies {
      */
     implementation "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
     implementation "io.reactivex.rxjava2:rxjava:$versions.rx_java"
+
+    /**
+     * ProgressActivity
+     */
+    implementation 'com.github.vlonjatg:progress-activity:2.0.5'
+
 
     /**
      * Test
