@@ -1,4 +1,11 @@
 <resources>
-    <string name="app_name">Application</string>
-    <string name="text_press_back_again_to_exit">Press back again to exit</string>
+    <string name="app_name">Xem Bóng Đá</string>
+    <string name="text_press_back_again_to_exit">Nhấn lần nữa để thoát</string>
+    <string name="text_loading">Đang tải…</string>
+    <string name="text_enter_result">Nhập kết quả</string>
+    <string name="text_wrong_result">Sai rồi, bạn có nhầm không?</string>
+    <string name="text_rate_review_us"><![CDATA[Đánh giá & góp ý cho chúng tôi]]></string>
+    <string name="text_our_other_apps">Các ứng dụng khác của chúng tôi</string>
+    <string name="text_versions">Phiên bản ứng dụng</string>
+    <string name="text_would_you_like">Bạn có muốn sử dụng thử những ứng dụng khác của chúng tôi?</string>
 </resources>

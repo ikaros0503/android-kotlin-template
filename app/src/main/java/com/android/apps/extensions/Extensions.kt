@@ -8,6 +8,7 @@ import android.content.res.Resources
 import android.net.Uri
 import androidx.appcompat.app.AlertDialog
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import org.json.JSONArray
 import java.lang.Exception
@@ -55,15 +56,49 @@ fun Context.toast(message: String = "", messageId: Int = -1) {
 }
 
 fun Context.goStore(packageId: String) {
-    startActivity(
-        Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageId")).addFlags(
-            Intent.FLAG_ACTIVITY_NEW_TASK
+    try {
+        startActivity(
+            Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageId")).addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK
+            )
         )
-    )
+    } catch (e: Exception) {
+        startActivity(
+            Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageId")).addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK
+            )
+        )
+    }
+}
+
+fun Context.openDevPage(devId: String) {
+    try {
+        startActivity(
+            Intent(Intent.ACTION_VIEW, Uri.parse("market://dev?id=$devId")).addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK
+            )
+        )
+    } catch (e: Exception) {
+        startActivity(
+            Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/dev?id=$devId")).addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK
+            )
+        )
+    }
 }
 
 fun Context.isPermissionGranted(permission: String): Boolean {
     return ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
+}
+
+fun Context.readAssets(name: String): String {
+    return assets.open(name).use { inputStream ->
+        ByteArray(inputStream.available()).also {
+            inputStream.read(it)
+        }.let {
+            String(it)
+        }
+    }
 }
 
 
@@ -94,3 +129,4 @@ val Float.dp: Float
     get() = (this / Resources.getSystem().displayMetrics.density)
 val Float.px: Float
     get() = (this * Resources.getSystem().displayMetrics.density)
+

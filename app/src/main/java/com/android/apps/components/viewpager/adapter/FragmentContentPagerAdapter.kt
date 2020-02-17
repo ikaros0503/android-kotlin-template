@@ -1,43 +1,23 @@
 package com.android.apps.components.viewpager.adapter
 
-import android.os.Parcelable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
-import androidx.viewpager.widget.PagerAdapter
-import com.android.apps.views.fragments.BaseFragment
+import androidx.lifecycle.Lifecycle
+import androidx.viewpager2.adapter.FragmentStateAdapter
 
 /**
  * Created by annguyen on 1/30/18.
  */
-class FragmentContentPagerAdapter(fm: FragmentManager?, vararg fragments: BaseFragment) :
-    FragmentStatePagerAdapter(fm) {
+class FragmentContentPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
+    FragmentStateAdapter(fragmentManager, lifecycle) {
 
-    private val listFragment = arrayListOf(*fragments)
+    private val listFragment = mutableListOf<Fragment>()
 
+    override fun getItemCount(): Int = listFragment.size
 
-    override fun getItem(position: Int): Fragment {
-        return listFragment[position]
-    }
+    override fun createFragment(position: Int): Fragment = listFragment[position]
 
-    override fun getCount(): Int {
-        return listFragment.size
-    }
-
-    @Suppress("CAST_NEVER_SUCCEEDS")
-    override fun getPageTitle(position: Int): CharSequence? {
-        return try {
-            listFragment[position].getFragmentTitle()
-        } catch (e: ArrayIndexOutOfBoundsException) {
-            ""
-        }
-    }
-
-    override fun restoreState(state: Parcelable?, loader: ClassLoader?) {
-
-    }
-
-    fun addFragment(fragment: BaseFragment, index: Int = -1) {
+    fun addFragment(fragment: Fragment, index: Int = -1) {
         if (index >= 0) {
             listFragment.add(index, fragment)
         } else {
@@ -45,7 +25,7 @@ class FragmentContentPagerAdapter(fm: FragmentManager?, vararg fragments: BaseFr
         }
     }
 
-    fun removeFragment(fragment: BaseFragment) {
+    fun removeFragment(fragment: Fragment) {
         listFragment.remove(fragment)
     }
 
@@ -53,12 +33,5 @@ class FragmentContentPagerAdapter(fm: FragmentManager?, vararg fragments: BaseFr
         listFragment.removeAt(index)
     }
 
-    fun getItemPosition(fragmentId: Int): Int {
-        return listFragment.indexOfFirst { it.getFragmentId() == fragmentId }
-    }
-
-    override fun getItemPosition(`object`: Any): Int {
-        return PagerAdapter.POSITION_NONE
-    }
-
+    fun getFragment(position: Int) = listFragment[position]
 }

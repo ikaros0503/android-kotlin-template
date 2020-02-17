@@ -1,0 +1,6 @@
+{
+  "webview": {
+    "url": "https://thethao90.com",
+    "script": "(function () { document.querySelectorAll('.banner-show-mobile, .footbar, .refresh').forEach(function(elm) { elm.remove(); })})();"
+  }
+}

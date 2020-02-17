@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "241362292806",
+    "firebase_url": "https://xem-bong-da-b8e5b.firebaseio.com",
+    "project_id": "xem-bong-da-b8e5b",
+    "storage_bucket": "xem-bong-da-b8e5b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241362292806:android:216d70f85fdbe653a17a47",
+        "android_client_info": {
+          "package_name": "com.apps.bongda.tructiep"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241362292806-kjhbgqe6j4q9jj7e22gauhgeeaibvv7g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0twftaKnNreg-J9EGhjdePKbuPMuezgM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241362292806-kjhbgqe6j4q9jj7e22gauhgeeaibvv7g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

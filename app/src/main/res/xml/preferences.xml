@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Preference
+        android:key="rate_us"
+        android:title="@string/text_rate_review_us"
+        android:summary="⭐⭐⭐⭐⭐"
+        app:iconSpaceReserved="false" />
+    <Preference
+        android:key="other_apps"
+        android:title="@string/text_our_other_apps"
+        android:summary="@string/text_would_you_like"
+        app:iconSpaceReserved="false" />
+    <Preference
+        android:key="version"
+        android:title="@string/text_versions"
+        app:iconSpaceReserved="false" />
+</PreferenceScreen>
