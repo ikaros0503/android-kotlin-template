@@ -55,7 +55,7 @@ class WebFragment : BaseFragment() {
                 }
             }
 
-            configRepository.config.webview.url.takeIf { it.isNotEmpty() }?.also {
+            configRepository.config?.webview?.url.takeIf { it.isNotEmpty() }?.also {
                 loadUrl(it)
             }
         }

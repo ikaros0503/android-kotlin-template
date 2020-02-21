@@ -10,7 +10,6 @@ import com.android.apps.utils.prefs.put
 import com.github.kittinunf.fuel.gson.responseObject
 import com.github.kittinunf.fuel.httpGet
 import com.google.gson.Gson
-import com.google.gson.annotations.SerializedName
 import io.reactivex.Flowable
 import io.reactivex.schedulers.Schedulers
 
