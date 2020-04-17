@@ -7,11 +7,12 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven { url "https://oss.jfrog.org/libs-snapshot" }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
 
-        classpath "com.android.tools.build:gradle:$versions.gradle"
+        classpath "com.android.tools.build:gradle:${versions.gradle}"
 
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -23,6 +24,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://oss.jfrog.org/libs-snapshot" }
     }
 }
 
