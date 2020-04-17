@@ -66,6 +66,10 @@ dependencies {
     implementation "androidx.vectordrawable:vectordrawable-animated:$versions.androidx.vectordrawable_animated"
     implementation "androidx.cardview:cardview:$versions.androidx.cardview"
 
+    implementation "androidx.lifecycle:lifecycle-extensions:$versions.androidx.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$versions.androidx.lifecycleVersion"
+
+
     /**
      * Jetpack
      */

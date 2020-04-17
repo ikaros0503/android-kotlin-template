@@ -19,7 +19,7 @@ def versions = [
                 cardview               : '1.0.0',
                 ktxVersion             : '1.2.0',
                 fragmentKtx            : '1.1.0-alpha09',
-                lifecycleVersion       : '2.2.0-alpha02',
+                lifecycleVersion       : '2.2.0',
                 workVersion            : '2.1.0',
                 viewpager2             : "1.0.0-beta01",
         ]
