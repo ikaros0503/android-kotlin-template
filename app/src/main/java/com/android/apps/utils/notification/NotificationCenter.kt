@@ -1,8 +1,8 @@
 package com.android.apps.utils.notification
 
 import android.util.SparseArray
-import io.reactivex.disposables.Disposable
-import io.reactivex.subjects.PublishSubject
+import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.subjects.PublishSubject
 
 class NotificationCenter {
 

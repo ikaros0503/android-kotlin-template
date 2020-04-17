@@ -3,6 +3,7 @@ package com.android.apps.extensions
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.net.Uri
 import androidx.appcompat.app.AlertDialog
@@ -26,12 +27,18 @@ fun JSONArray.forEach(body: (Any) -> Unit) {
  *  AlertDialog
  */
 fun AlertDialog.onConfirmed(action: () -> Unit): AlertDialog {
-    this.setButton(DialogInterface.BUTTON_POSITIVE, context.getString(android.R.string.yes)) { _, _ -> action.invoke() }
+    this.setButton(
+        DialogInterface.BUTTON_POSITIVE,
+        context.getString(android.R.string.yes)
+    ) { _, _ -> action.invoke() }
     return this
 }
 
 fun AlertDialog.onDenied(action: () -> Unit): AlertDialog {
-    this.setButton(DialogInterface.BUTTON_NEGATIVE, context.getString(android.R.string.no)) { _, _ -> action.invoke() }
+    this.setButton(
+        DialogInterface.BUTTON_NEGATIVE,
+        context.getString(android.R.string.no)
+    ) { _, _ -> action.invoke() }
     return this
 }
 
@@ -48,9 +55,16 @@ fun Context.toast(message: String = "", messageId: Int = -1) {
 }
 
 fun Context.goStore(packageId: String) {
-    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageId")).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+    startActivity(
+        Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageId")).addFlags(
+            Intent.FLAG_ACTIVITY_NEW_TASK
+        )
+    )
 }
 
+fun Context.isPermissionGranted(permission: String): Boolean {
+    return ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
+}
 
 
 /**

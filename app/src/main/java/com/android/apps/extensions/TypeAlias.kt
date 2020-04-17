@@ -6,4 +6,7 @@ typealias OnFragmentResults = (granted: List<String>, denied: List<String>) -> U
 
 typealias OnPermissionDone = (permission: List<String>, all: Boolean) -> Unit
 
+typealias SimpleAction = () -> Unit
+
 typealias OnEventItemClickListener = (Event, Int) -> Unit
+

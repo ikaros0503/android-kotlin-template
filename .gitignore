@@ -10,5 +10,6 @@
 .externalNativeBuild
 
 
-/.idea/build_file_checksums.ser
-/app/realease
+/.idea/caches/build_file_checksums.ser
+/app/release*/
+/.idea/
