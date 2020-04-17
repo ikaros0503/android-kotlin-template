@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
 
@@ -47,6 +48,10 @@ android {
         // but continue the build even when errors are found:
         abortOnError false
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -85,6 +90,22 @@ dependencies {
      */
     implementation "io.reactivex.rxjava3:rxandroid:$versions.rx_android"
     implementation "io.reactivex.rxjava3:rxjava:$versions.rx_java"
+
+    /**
+     * Retrofit
+     */
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+
+    /**
+     * Gson
+     */
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
+    /**
+     * Fresco
+     */
+    implementation 'com.facebook.fresco:fresco:1.13.0'
 
     /**
      * Test
