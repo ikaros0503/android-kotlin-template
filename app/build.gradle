@@ -31,7 +31,7 @@ android {
         buildConfigField "String", "CONFIG_URL", "\"${config.configUrl}\""
 
         sourceSets {
-            main.res.srcDirs += "../resource"
+            main.res.srcDirs += "../resources"
         }
     }
 
