@@ -5,9 +5,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.android.apps.R
 import com.android.apps.extensions.toast
-import io.reactivex.Observable
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.disposables.Disposable
+
 import java.util.concurrent.TimeUnit
 
 abstract class BaseActivity: AppCompatActivity() {

@@ -3,11 +3,23 @@ ext.config = [
         versionCode: 1,
         versionName: "1.0.0",
 
+        appName: "Nghe nhac",
+        searchKeyword: "{searchKeyword}",
+        mainColor: "#000000",
+        configUrl: "http://config.example",
+
         /**
          * Config SDK
          * **/
 
         compileSdkVersion: 29,
         minSdkVersion: 16,
-        targetSdkVersion: 29
+        targetSdkVersion: 29,
+
+        signingConfig: [
+                keyStore: '../../keyStore.jks',
+                keyPass: '',
+                alias: '',
+                aliasPass: ''
+        ]
 ]

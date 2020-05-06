@@ -5,7 +5,12 @@ apply plugin: 'kotlin-android-extensions'
 android {
 
     signingConfigs {
-
+        release {
+            storeFile file(config.signingConfig.keyStore)
+            storePassword config.signingConfig.keyPass
+            keyAlias = config.signingConfig.alias
+            keyPassword config.signingConfig.aliasPass
+        }
     }
 
     compileSdkVersion config.compileSdkVersion
@@ -17,13 +22,24 @@ android {
         versionCode config.versionCode
         versionName config.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        setProperty("archivesBaseName", "${config.packageName}_${config.versionName}")
+
+        resValue "string", "searchKeyword", config.searchKeyword
+        resValue "string", "app_name", config.appName
+        resValue "color", "mainColor", config.mainColor
+        buildConfigField "String", "CONFIG_URL", "\"${config.configUrl}\""
+
+        sourceSets {
+            main.res.srcDirs += "../resource"
+        }
     }
 
     buildTypes {
         release {
-            minifyEnabled false
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
                     outputFileName = "${config.packageName}.apk"

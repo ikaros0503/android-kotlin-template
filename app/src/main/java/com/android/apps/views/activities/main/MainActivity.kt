@@ -1,5 +1,6 @@
 package com.android.apps.views.activities.main
 
+import com.android.apps.BuildConfig
 import com.android.apps.R
 import com.android.apps.utils.permission.Permissions
 import com.android.apps.views.activities.BaseActivity
