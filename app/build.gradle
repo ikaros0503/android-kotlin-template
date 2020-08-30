@@ -17,13 +17,14 @@ android {
         versionCode config.versionCode
         versionName config.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
 
     buildTypes {
         release {
-            minifyEnabled false
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
                     outputFileName = "${config.packageName}.apk"
