@@ -5,16 +5,21 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.android.apps.R
 import com.android.apps.extensions.toast
+import com.android.apps.utils.permission.RequestPermissionComponent
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import java.util.concurrent.TimeUnit
 
-abstract class BaseActivity: AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
 
     private var disposableBackPressed: Disposable? = null
 
+    private val requestPermissionComponent = RequestPermissionComponent()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestPermissionComponent.register(this)
         setContentView(getLayoutId())
         initialize()
     }
@@ -28,6 +33,13 @@ abstract class BaseActivity: AppCompatActivity() {
 
     fun navigateTo(activity: Class<*>, bundle: Bundle = Bundle()) {
         startActivity(Intent(this, activity), bundle)
+    }
+
+    fun requestPermission(
+        permission: String,
+        callback: RequestPermissionComponent.OnRequestPermissionCallBack
+    ) {
+        requestPermissionComponent.requestPermission(permission, callback)
     }
 
     protected open fun initializeVariable() {}
@@ -47,5 +59,10 @@ abstract class BaseActivity: AppCompatActivity() {
             toast(messageId = R.string.text_press_back_again_to_exit)
             disposableBackPressed = Observable.timer(2000, TimeUnit.MILLISECONDS).subscribe()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        requestPermissionComponent.unregister()
     }
 }

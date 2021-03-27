@@ -1,9 +1,11 @@
 package com.android.apps.views.activities.main
 
+import android.Manifest
+import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
 import com.android.apps.R
-import com.android.apps.utils.permission.Permissions
 import com.android.apps.views.activities.BaseActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
 
 class MainActivity : BaseActivity() {
 
@@ -14,18 +16,12 @@ class MainActivity : BaseActivity() {
 
     override fun initializeViewComponent() {
         super.initializeViewComponent()
-        button.setOnClickListener {
-            Permissions.Builder(this)
-                    .checkDrawOverApps()
-                    .ensure()
-                    .requestIfFailed()
-                    .onGranted { permission, all ->
-
-                    }
-                    .onDenied { permission, all ->
-
-                    }
-                    .check()
+        requestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) {
+            Timber.d("Grant permission result: $it")
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 }
